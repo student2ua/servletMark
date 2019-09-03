@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: tor
+  Date: 30.08.19
+  Time: 16:13
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>Сторінка авторизації</title>
+</h:head>
+
+<h:body>
+    <h:form>
+        <h:panelGrid columns="2" border="0">
+            <h:outputText value="Логін"/>
+            <h:inputText value="#{loginBean.login}" required="true" requiredMessage="Введіть своє ім’я користувача"
+                         p:placeholder="Username" p:autofocus="true">
+                <f:validateLength maximum="50" minimum="3"/>
+            </h:inputText>
+            <h:outputText value="Пароль"/>
+            <h:inputSecret value="#{loginBean.password}" required="true" requiredMessage="Введіть ваш пароль"
+                           p:placeholder="Password"><f:validateLength maximum="50" minimum="3"/>
+            </h:inputSecret>
+        </h:panelGrid>
+        <h:messages/>
+        <h:commandButton value="Вхід" action="#{loginBean.checkLogin}"/>
+    </h:form>
+</h:body>
+</html>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <groupId>com.ecwo.ua</groupId>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>servletMark</artifactId>
+    <version>19.07</version>
+    <repositories>
+        <repository>
+            <id>datanucleus</id>
+            <name>datanucleus</name>
+            <url>http://www.datanucleus.org/downloads/maven2/</url>
+        </repository>
+        <!--for oracle 12 (4.1) JDBC driver-->
+        <repository>
+            <id>hand-china</id>
+            <name>hand-china</name>
+            <url>http://nexus.saas.hand-china.com/content/repositories/rdc/</url>
+        </repository>
+    </repositories>
+    <properties>
+        <tomcat.version>7.0.27</tomcat.version>
+    </properties>
+    <dependencies>
+        <!--  <dependency>
+              <groupId>javax</groupId>
+              <artifactId>javaee-web-api</artifactId>
+              <version>6.0</version>
+              <scope>provided</scope>
+          </dependency>-->
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-servlet-api</artifactId>
+            <version>${tomcat.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-jsp-api</artifactId>
+            <version>${tomcat.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <!--For tomcat you have to have both jsf-api and jsf-impl since tomcat don't have bundled JSF-->
+        <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-api</artifactId>
+            <version>2.2.19</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-impl</artifactId>
+            <version>2.2.19</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>el-impl</artifactId>
+            <version>2.2</version>
+        </dependency>
+        <!--need 10.1.0.3-->
+        <!--   <dependency>
+               <groupId>oracle</groupId>
+               <artifactId>ojdbc6</artifactId>
+               <version>11.2.0.3</version>
+
+           </dependency>-->
+        <!-- https://mvnrepository.com/artifact/oracle/ojdbc14_g -->
+        <!-- tomcat7 & jdk 6  -->
+        <dependency>
+            <groupId>oracle</groupId>
+            <artifactId>ojdbc14_g</artifactId>
+            <version>10.2.0.4</version>
+        </dependency>
+
+        <!--tomcat 9 && jdk 8-->
+        <!--  <dependency>
+              <groupId>com.oracle</groupId>
+              <artifactId>ojdbc7</artifactId>
+              <version>12.1.0.2</version>
+          </dependency>
+  -->
+    </dependencies>
+
+    <packaging>war</packaging>
+    <build>
+        <finalName>mark</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <port>9090</port>
+                    <path>/</path>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: tor
+  Date: 30.08.19
+  Time: 16:18
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+    <ui:composition template="/pgs/templLayout.xhtml">
+
+        <ui:define name="header"> Успешная авторизация </ui:define>
+
+        <ui:define name="content">
+
+            <h:outputText value="Добро пожаловать: #{loginBean.login}!"/>
+            <ul class="kroshki">
+                <li><a href="/" class="main" title="Главная страница"></a><i></i></li>
+                <li><a href="/subject">Предметы</a><i></i></li>
+                <li><a href="/subject/123">Мумитрольство</a></li>
+            </ul>
+            <div class="title_box">
+                <h1><a href="/subject/5">Мумитрольство</a>, <span><a href="/class/6">5 "А"</a></span></h1>
+
+                <div class="line_small">
+                    <a href="/class/6/lessons/74/show"> <span class="icon-check"></span>Уроки по предмету</a>
+                    <span class="divide">|</span>
+                    <a href="/class/6/timetable/edit"> <span class="icon-list-alt"></span>Редактировать расписание </a>
+                    <span class="divide">|</span>
+                    <a href="/class/6/timetable/publish"> <span class="icon-list"></span>Генератор уроков </a>
+                </div>
+            </div>
+        </ui:define>
+
+    </ui:composition>
+</h:body>
+</html>
